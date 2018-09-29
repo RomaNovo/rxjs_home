@@ -1,16 +1,39 @@
-let button = document.querySelector('button');
-let input = document.querySelector('input');
+function createSubscribe(name) {
+	return {
+		next(x) {
+			console.log(name,': ', x)	
+		},
+		error(err){
+			console.log('Error : ', x)	
+		},
+		complete() {
+			console.log(name, 'complited!')	
+		}
+	}
+}
 
-const { fromEvent } = Rx.Observable;
 
-fromEvent(input, 'keyup')
-	.subscribe( (e)=> console.log(e));
+// Function - of
+
+/*Rx.Observable.of(5, '0', 4, 'string')
+	.subscribe(createSubscribe('of') );*/
+		
+
+// Creating interval :
+
+/*Rx.Observable.interval(500)
+	.take(15)
+	.subscribe(createSubscribe('interval'));*/
+
+// Creating timer :
 
 
-fromEvent(button, 'click')
-	.subscribe( (e)=> console.log(e));
+/*Rx.Observable.timer(4000,500)
+	.take(10)
+	.subscribe(createSubscribe('timer'));*/
 
-fromEvent(document, 'mousemove').
-	subscribe( (e)=> {
-		document.querySelector('h1').innerHTML = `X: ${e.clientX}, Y: ${e.clientY}`;
-	})
+
+// Creating range: 
+
+Rx.Observable.range(3,6)
+	.subscribe(createSubscribe('timer'));
