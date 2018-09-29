@@ -13,27 +13,36 @@ function createSubscribe(name) {
 }
 
 
-// Function - of
+const arr = [
+	{
+		id: 1,
+		name: 'wfm1'
+	},
+	{
+		id: 2,
+		name: 'wfm2'
+	}
+]
 
-/*Rx.Observable.of(5, '0', 4, 'string')
-	.subscribe(createSubscribe('of') );*/
-		
+/*Rx.Observable.from(arr)
+	.subscribe( createSubscribe('from'));*/
 
-// Creating interval :
+// Creating SET
 
-/*Rx.Observable.interval(500)
-	.take(15)
-	.subscribe(createSubscribe('interval'));*/
-
-// Creating timer :
+/*const set = new Set([1,2,3,'4','5', {id:5}]);
 
 
-/*Rx.Observable.timer(4000,500)
-	.take(10)
-	.subscribe(createSubscribe('timer'));*/
+Rx.Observable.from(set)
+	.subscribe( createSubscribe('set'));*/
+
+// Creating Map
+
+const map = new Map([[1,3],[4,4],[11,11]]);
+
+Rx.Observable.from(map)
+	.subscribe( createSubscribe('map'));
 
 
-// Creating range: 
 
-Rx.Observable.range(3,6)
-	.subscribe(createSubscribe('timer'));
+
+
